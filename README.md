@@ -9,7 +9,9 @@ A hovering drone that teaches itself to fly across procedurally generated hilly 
 
 ## 🎥 Demo
 
-<!-- Drag a short video or GIF of the trained drone flying into this spot on GitHub -->
+
+https://github.com/user-attachments/assets/c77d7038-be13-4ec6-a937-04f21baa52bf
+
 
 ## 🎯 The Task
 
@@ -50,15 +52,18 @@ A hovering drone that teaches itself to fly across procedurally generated hilly 
 
 ### Hypothesis 1: Do ground sensors help?
 
-I trained two agents with identical settings. The only difference was the `useGroundSensors` toggle:
+I trained two agents with identical settings. The only difference was the `useGroundSensors` toggle. Results are averaged over the last 10 logged training points:
 
-| Run | Ground sensors | Success rate | Obstacle hits |
-|---|---|---|---|
-| `Baseline` | ✅ On | _x%_ | _x%_ |
-| `NoSensors` | ❌ Off (replaced with zeros) | _x%_ | _x%_ |
+| Run | Ground sensors | Success rate | Hit obstacle | Crashed into terrain / left arena | Mean reward |
+|---|---|---|---|---|---|
+| `Baseline` | ✅ On | **69.5%** | 21.6% | 8.9% | **0.67** |
+| `NoSensors` | ❌ Off | 51.0% | 13.0% | 35.9% | 0.01 |
 
-_Conclusion: fill in what you found, e.g. "With ground sensors the drone reached the target X% more often and crashed into hills less, confirming that local terrain awareness matters on uneven ground."_
+**Result: hypothesis supported.** With ground sensors, the drone reached the target **18.5 percentage points more often**, and its terrain crashes dropped from about 36% to about 9%. Without them, the drone couldn't see the hills coming and flew into them.
 
+Interestingly, the NoSensors agent hit *fewer* pillars. That's not because it avoided them better: many of its episodes ended in a terrain crash before it ever reached the pillars.
+
+> **Caveat:** the NoSensors run trained for about 216k steps, while Baseline trained for 500k, so part of the gap may come from less training. A fair rerun would train both for 500k steps.
 ### Curriculum learning
 
 `lethabo_drone_curriculum.yaml` trains the drone on progressively harder terrain. It moves to the next lesson once the smoothed reward reaches 0.6:

@@ -64,9 +64,10 @@ I trained two agents with identical settings. The only difference was the `useGr
 Interestingly, the NoSensors agent hit *fewer* pillars. That's not because it avoided them better: many of its episodes ended in a terrain crash before it ever reached the pillars.
 
 > **Caveat:** the NoSensors run trained for about 216k steps, while Baseline trained for 500k, so part of the gap may come from less training. A fair rerun would train both for 500k steps.
+
 ### Curriculum learning
 
-`lethabo_drone_curriculum.yaml` trains the drone on progressively harder terrain. It moves to the next lesson once the smoothed reward reaches 0.6:
+`lethabo_drone_curriculum.yaml` (included, not yet trained) is set up to train the drone on progressively harder terrain.
 
 | Lesson | Hill height |
 |---|---|

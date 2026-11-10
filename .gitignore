@@ -1,0 +1,26 @@
+# Unity generated
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Bb]uild*/
+*.csproj
+*.sln
+*.slnx
+*.suo
+*.user
+*.pidb
+*.booproj
+*.unityproj
+.vs/
+.vscode/
+.idea/
+
+# Python / ML-Agents
+venv/
+__pycache__/
+results/
+
+# OS
+.DS_Store
